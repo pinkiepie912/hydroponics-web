@@ -1,0 +1,21 @@
+version: '3'
+services:
+  hydroponics-web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        ENV: development
+    container_name: hydroponics-web 
+    environment:
+      ENV: development
+    volumes:
+      - ./:/hydroponics-web /
+      - /hydroponics-web/node_modules
+    ports:
+      - 8081:8081
+    command: npm run watch
+    networks:
+      - default
+networks:
+  default:
